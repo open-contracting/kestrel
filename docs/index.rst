@@ -1,0 +1,4 @@
+Kestrel
+=======
+
+.. include:: ../README.rst
