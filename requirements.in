@@ -2,6 +2,7 @@ dj-database-url
 django<5
 gunicorn[setproctitle]
 psycopg2
+pydantic
 requests
 rich
 sentry-sdk
