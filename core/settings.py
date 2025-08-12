@@ -35,7 +35,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "+t7^u*4a@j$tsaff)+xc3t=ey&5l-sj0xezd4_tpl5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", str(not production)) == "True"
 
-ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]", "0.0.0.0"]
+ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]", "0.0.0.0"]  # noqa: S104 # Docker
 if "ALLOWED_HOSTS" in os.environ:
     ALLOWED_HOSTS.extend(os.getenv("ALLOWED_HOSTS", "").split(","))
 
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
+    "kestrel",
 ]
 
 MIDDLEWARE = [
@@ -89,9 +90,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": dj_database_url.config(default="postgresql:///kestrel?application_name=kestrel")
-}
+DATABASES = {"default": dj_database_url.config(default="postgresql:///kestrel?application_name=kestrel")}
 
 
 # Password validation

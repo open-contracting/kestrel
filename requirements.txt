@@ -3,18 +3,34 @@
 asgiref==3.8.1
     # via django
 certifi==2024.8.30
-    # via sentry-sdk
+    # via
+    #   requests
+    #   sentry-sdk
+charset-normalizer==3.4.3
+    # via requests
 dj-database-url==2.2.0
     # via -r requirements.in
 django==4.2.22
     # via
     #   -r requirements.in
     #   dj-database-url
-gunicorn[setproctitle]==23.0.0
+gunicorn==23.0.0
     # via -r requirements.in
+idna==3.10
+    # via requests
+markdown-it-py==4.0.0
+    # via rich
+mdurl==0.1.2
+    # via markdown-it-py
 packaging==24.1
     # via gunicorn
 psycopg2==2.9.9
+    # via -r requirements.in
+pygments==2.19.2
+    # via rich
+requests==2.32.4
+    # via -r requirements.in
+rich==14.1.0
     # via -r requirements.in
 sentry-sdk==2.16.0
     # via -r requirements.in
@@ -25,4 +41,6 @@ sqlparse==0.5.1
 typing-extensions==4.12.2
     # via dj-database-url
 urllib3==2.5.0
-    # via sentry-sdk
+    # via
+    #   requests
+    #   sentry-sdk
