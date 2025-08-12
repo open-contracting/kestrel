@@ -34,16 +34,17 @@ class Command(BaseCommand):
 
         url = start_url
         inserted = 0
+        updated = 0
         idle = 0
 
         with Progress(
             *Progress.get_default_columns(),
             TimeElapsedColumn(),
             TextColumn("{task.completed}/{task.total} records"),
-            TextColumn("({task.fields[inserted]} new)"),
+            TextColumn("({task.fields[inserted]} new, {task.fields[updated]} updated)"),
             TextColumn("({task.fields[idle]:.1f}s idle)"),
         ) as progress:
-            task_id = progress.add_task("Collecting", total=None, inserted=0, idle=0)
+            task_id = progress.add_task("Collecting", total=None, inserted=0, updated=0, idle=0)
 
             while url:
                 progress.console.print(f"GET {url}")
@@ -66,13 +67,17 @@ class Command(BaseCommand):
                     )
 
                 for item in data["results"]:
-                    progress.update(task_id, advance=1)
                     external_id = str(item["id"])
-                    # Use exists(), because create() always increments the primary key.
-                    if not Record.objects.filter(source="muckrock_foia", external_id=external_id).exists():
-                        Record.objects.create(source="muckrock_foia", external_id=external_id, response=item)
+                    _, created = Record.objects.update_or_create(
+                        source="muckrock_foia", external_id=external_id, defaults={"response": item}
+                    )
+                    if created:
                         inserted += 1
                         progress.update(task_id, inserted=inserted)
+                    else:
+                        updated += 1
+                        progress.update(task_id, updated=updated)
+                    progress.update(task_id, advance=1)
 
                 # The rate limit is 1 request per second.
                 if wait := max(0, 1 - (time.monotonic() - last_request_time)):
@@ -84,4 +89,6 @@ class Command(BaseCommand):
                 if not url:
                     break
 
-        self.stdout.write(self.style.SUCCESS(f"{inserted} new records from MuckRock FOIA API (slept {idle:.1f}s)"))
+        self.stdout.write(
+            self.style.SUCCESS(f"{inserted} new, {updated} updated records from MuckRock FOIA API (slept {idle:.1f}s)")
+        )
