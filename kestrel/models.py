@@ -5,6 +5,9 @@ class Record(models.Model):
     source = models.TextField()
     external_id = models.TextField()
     response = models.JSONField(default=dict)
+    manual_label = models.BooleanField(null=True, blank=True)
+    predicted_label = models.BooleanField(null=True, blank=True)
+    predicted_score = models.FloatField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
