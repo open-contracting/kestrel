@@ -1,5 +1,6 @@
 dj-database-url
 django<5
+django-rich
 gunicorn[setproctitle]
 psycopg2
 pydantic
