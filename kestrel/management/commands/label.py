@@ -20,7 +20,6 @@ class Highlighter(RegexHighlighter):
                 acquisition|
                 agreement|
                 award|
-                awarded|
                 bid|
                 bidder|
                 bidding|
@@ -31,7 +30,6 @@ class Highlighter(RegexHighlighter):
                 fixed-price|
                 infrastructure|
                 procure|
-                procured|
                 procurement|
                 procuring|
                 proposal|
