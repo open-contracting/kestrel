@@ -48,3 +48,12 @@ Train and cross-validate a classifier to label text about procurement.
 .. tip::
 
    To see progress during grid search, set: ``-v3``
+
+predict
+~~~~~~~
+
+Automatically label data as being about procurement.
+
+.. code-block:: bash
+
+   manage.py predict {source,...}
