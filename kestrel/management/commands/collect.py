@@ -1,13 +1,14 @@
 import time
 
 import requests
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import CommandError
+from django_rich.management import RichCommand
 from rich.progress import Progress, TextColumn, TimeElapsedColumn
 
 from kestrel.models import SOURCES, Record
 
 
-class Command(BaseCommand):
+class Command(RichCommand):
     help = "Collect data from various APIs"
 
     def add_arguments(self, parser):
@@ -43,6 +44,7 @@ class Command(BaseCommand):
             TextColumn("{task.completed}/{task.total} records"),
             TextColumn("({task.fields[inserted]} new, {task.fields[updated]} updated)"),
             TextColumn("({task.fields[idle]:.1f}s idle)"),
+            console=self.console,
         ) as progress:
             task_id = progress.add_task("Collecting", total=None, inserted=0, updated=0, idle=0)
 
@@ -89,6 +91,6 @@ class Command(BaseCommand):
                 if not url:
                     break
 
-        self.stdout.write(
-            self.style.SUCCESS(f"{inserted} new, {updated} updated records from MuckRock FOIA API (slept {idle:.1f}s)")
+        self.console.print(
+            f"{inserted} new, {updated} updated records from MuckRock FOIA API (slept {idle:.1f}s)", style="green"
         )
