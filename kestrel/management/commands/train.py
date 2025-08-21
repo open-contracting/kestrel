@@ -129,10 +129,12 @@ class Command(RichCommand):
                             sublinear_tf=True,
                         ),
                     ),
+                    # NOTE: For imbalanced data, consider `class_prior`, using known priors or compute_class_weight().
                     ("est", MultinomialNB(alpha=0.1)),
                 ],
                 # https://scikit-learn.org/stable/modules/compose.html#caching-transformers-avoid-repeated-computation
                 memory=cache_dir,
+                # `verbose=True` logs timing information.
             )
 
             if PARAM_GRID:
@@ -158,6 +160,7 @@ class Command(RichCommand):
             test_score = pipeline.score(X_test, y_test)
             estimator = pipeline.best_estimator_
         else:
+            # If performance degrades, consider `n_jobs=-1` and `verbose=verbosity`.
             cv_scores = cross_val_score(pipeline, X_train, y_train, scoring=CV_SCORING)
 
             mean_cv_score = cv_scores.mean()
