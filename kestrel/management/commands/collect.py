@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("source", choices=SOURCES, help="Source from which to collect records")
-        parser.add_argument("--resume", type=int, help="Resume data collection from this page")
+        parser.add_argument("--resume", type=int, metavar="PAGE", help="Resume data collection from this page")
 
     def handle(self, *args, **options):
         source = options["source"]

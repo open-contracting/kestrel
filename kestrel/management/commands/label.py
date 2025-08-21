@@ -70,16 +70,16 @@ def highlight(text):
 
 
 class Command(RichCommand):
-    help = "Label data about procurement"
+    help = "Manually label data as being about procurement"
 
     def make_rich_console(self, **kwargs):
         return super().make_rich_console(**kwargs, highlight=False)  # disable distracting number highlights
 
     def add_arguments(self, parser):
         # For example, the user can provide IDs labeled by a naive classifier.
-        parser.add_argument("source", choices=SOURCES, help="Source whose records to label")
+        parser.add_argument("source", choices=SOURCES, help="Source from which to pick unlabeled records")
         parser.add_argument("id", nargs="*", type=int, help="IDs of records expected to be about procurement")
-        parser.add_argument("--relabel", action="store_true")
+        parser.add_argument("--relabel", action="store_true", help="Relabel the records provided by ID")
 
     def handle(self, *args, **options):
         source = options["source"]

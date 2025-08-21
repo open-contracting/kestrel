@@ -49,7 +49,7 @@ def preprocessor(text):
 
 
 class Command(RichCommand):
-    help = "Train or cross-validate a classifier to label text about procurement"
+    help = "Train and cross-validate a classifier to label text about procurement"
 
     def add_arguments(self, parser):
         # GridSearchCV uses joblib, which pickles top-level imports, and unpickling raises AppRegistryNotReady.

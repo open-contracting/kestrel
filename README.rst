@@ -1,6 +1,6 @@
 |Build Status| |Coverage Status|
 
-1-2 sentence description.
+Kestrel collects, classifies and extract contracting data from various sources, using AI/ML.
 
 (If you are viewing this on GitHub, open the `full documentation <https://kestrel.readthedocs.io/>`__ for additional details.)
 
