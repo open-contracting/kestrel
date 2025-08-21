@@ -8,7 +8,7 @@ import nltk
 import numpy as np
 from django_rich.management import RichCommand
 from sklearn.feature_extraction.text import TfidfVectorizer, strip_accents_unicode
-from sklearn.metrics import average_precision_score
+from sklearn.metrics import average_precision_score, classification_report
 from sklearn.model_selection import GridSearchCV, cross_val_score, train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
@@ -173,11 +173,14 @@ class Command(RichCommand):
         self.stdout.write(f"CV score: {mean_cv_score:.3f} ± {std_cv_score:.3f}")
         self.stdout.write(f"Test score: {test_score:.3f}")
 
+        self.stdout.write("\nClassification report:")
+        self.stdout.write(classification_report(y_test, estimator.predict(X_test)))
+
         feature_names = estimator.named_steps["tfidf"].get_feature_names_out()
         log_probabilities = estimator.named_steps["est"].feature_log_prob_
         scores = log_probabilities[1] - log_probabilities[0]
         indexes = scores.argsort()
-        self.stdout.write("Top features:")
+        self.stdout.write("\nTop features:")
         for i, idx in enumerate(reversed(indexes[-TOP_N:]), 1):
             self.stdout.write(f"{i:3d}. {feature_names[idx]:25s} ({scores[idx]:.3f})")
         self.stdout.write("...")
