@@ -177,12 +177,12 @@ class Command(RichCommand):
         log_probabilities = estimator.named_steps["est"].feature_log_prob_
         scores = log_probabilities[1] - log_probabilities[0]
         indexes = scores.argsort()
-        print(f"Top features:")
+        self.stdout.write("Top features:")
         for i, idx in enumerate(reversed(indexes[-TOP_N:]), 1):
-            print(f"{i:3d}. {feature_names[idx]:25s} ({scores[idx]:.3f})")
+            self.stdout.write(f"{i:3d}. {feature_names[idx]:25s} ({scores[idx]:.3f})")
         self.stdout.write("...")
         for i, idx in enumerate(reversed(indexes[:TOP_N]), len(feature_names) - TOP_N + 1):
-            print(f"{i:3d}. {feature_names[idx]:25s} ({scores[idx]:.3f})")
+            self.stdout.write(f"{i:3d}. {feature_names[idx]:25s} ({scores[idx]:.3f})")
 
         if not PARAM_GRID:
             # WARNING: Do not load models across different versions of sklearn.
