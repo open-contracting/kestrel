@@ -3,7 +3,7 @@ import time
 import requests
 from django.core.management.base import CommandError
 from django_rich.management import RichCommand
-from rich.progress import Progress, TextColumn, TimeElapsedColumn
+from rich.progress import MofNCompleteColumn, Progress, TextColumn, TimeElapsedColumn
 
 from kestrel.models import SOURCES, Record
 
@@ -41,12 +41,14 @@ class Command(RichCommand):
         with Progress(
             *Progress.get_default_columns(),
             TimeElapsedColumn(),
-            TextColumn("{task.completed}/{task.total} records"),
+            MofNCompleteColumn(),
             TextColumn("({task.fields[inserted]} new, {task.fields[updated]} updated)"),
             TextColumn("({task.fields[idle]:.1f}s idle)"),
             console=self.console,
         ) as progress:
-            task_id = progress.add_task("Collecting", total=None, inserted=0, updated=0, idle=0)
+            task_id = progress.add_task(
+                "Collecting records from muckrock_foia", total=None, inserted=0, updated=0, idle=0
+            )
 
             while url:
                 progress.console.print(f"GET {url}")
@@ -79,7 +81,7 @@ class Command(RichCommand):
                     else:
                         updated += 1
                         progress.update(task_id, updated=updated)
-                    progress.update(task_id, advance=1)
+                    progress.advance(task_id)
 
                 # The rate limit is 1 request per second.
                 if wait := max(0, 1 - (time.monotonic() - last_request_time)):
