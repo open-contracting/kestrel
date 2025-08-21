@@ -1,5 +1,7 @@
 from django.db import models
 
+SOURCES = ["muckrock_foia"]
+
 
 class Record(models.Model):
     source = models.TextField()

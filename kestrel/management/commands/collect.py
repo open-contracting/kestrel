@@ -4,14 +4,14 @@ import requests
 from django.core.management.base import BaseCommand, CommandError
 from rich.progress import Progress, TextColumn, TimeElapsedColumn
 
-from kestrel.models import Record
+from kestrel.models import SOURCES, Record
 
 
 class Command(BaseCommand):
     help = "Collect data from various APIs"
 
     def add_arguments(self, parser):
-        parser.add_argument("source", type=str, choices=["muckrock_foia"], help="Source from which to collect records")
+        parser.add_argument("source", choices=SOURCES, help="Source from which to collect records")
         parser.add_argument("--resume", type=int, help="Resume data collection from this page")
 
     def handle(self, *args, **options):
