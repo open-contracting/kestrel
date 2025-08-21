@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 def extract_text_features(source, response):
     match source:
         case "muckrock_foia":
@@ -15,3 +18,7 @@ def extract_text_features(source, response):
             return ""
         case _:
             raise NotImplementedError(f"extract_text_features() not implemented for source {source!r}")
+
+
+def get_model_path(source):
+    return Path("models") / f"{source}.skops"

@@ -2,7 +2,6 @@ import random
 import re
 import shutil
 import tempfile
-from pathlib import Path
 
 import nltk
 import numpy as np
@@ -21,7 +20,7 @@ except LookupError:
 
 from nltk.corpus import stopwords
 
-from kestrel.util import extract_text_features
+from kestrel.util import extract_text_features, get_model_path
 
 TOP_N = 20
 
@@ -181,6 +180,6 @@ class Command(RichCommand):
             #
             # We can't use ONNX: "Custom preprocessor cannot be converted into ONNX".
             # https://scikit-learn.org/stable/model_persistence.html
-            path = Path("models") / f"{source}.skops"
+            path = get_model_path(source)
             dump(pipeline, path)
             self.console.print(f"Saved model to {path}", style="green")
