@@ -1,9 +1,13 @@
 dj-database-url
-django<5
 django-rich
+django<5
 gunicorn[setproctitle]
+nltk
+numpy
 psycopg2
 pydantic
 requests
 rich
+scikit-learn
 sentry-sdk
+skops
