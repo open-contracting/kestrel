@@ -18,17 +18,12 @@ class Highlighter(RegexHighlighter):
             r"""
             (?P<yellow>
                 acquisition|
-                acquisitions|
                 agreement|
-                agreements|
                 award|
                 awarded|
-                awards|
                 bid|
                 bidder|
-                bidders|
                 bidding|
-                bids|
                 competitive bidding|
                 construction agreement|
                 construction contract|
@@ -37,8 +32,6 @@ class Highlighter(RegexHighlighter):
                 contract|
                 contracting|
                 contractor|
-                contractors|
-                contracts|
                 cost-plus|
                 fixed-price|
                 infrastructure|
@@ -50,7 +43,6 @@ class Highlighter(RegexHighlighter):
                 procurement|
                 procuring|
                 proposal|
-                proposals|
                 public works|
                 purchase|
                 purchasing|
@@ -64,18 +56,13 @@ class Highlighter(RegexHighlighter):
                 service contract|
                 sole source|
                 solicitation|
-                solicitations|
                 subcontract|
                 subcontractor|
-                subcontractors|
                 supplier|
-                suppliers|
                 tender|
                 tendering|
-                tenders|
                 time and materials|
-                vendor|
-                vendors
+                vendor
             )
             """,
             re.IGNORECASE | re.VERBOSE,
