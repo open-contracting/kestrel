@@ -24,20 +24,12 @@ class Highlighter(RegexHighlighter):
                 bid|
                 bidder|
                 bidding|
-                competitive bidding|
-                construction agreement|
-                construction contract|
-                consulting agreement|
-                consulting contract|
                 contract|
                 contracting|
                 contractor|
                 cost-plus|
                 fixed-price|
                 infrastructure|
-                lease agreement|
-                lease contract|
-                no-bid contract|
                 procure|
                 procured|
                 procurement|
@@ -51,9 +43,6 @@ class Highlighter(RegexHighlighter):
                 request for quote|
                 rfp|
                 rfq|
-                sealed bid|
-                service agreement|
-                service contract|
                 sole source|
                 solicitation|
                 subcontract|
