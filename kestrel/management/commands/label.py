@@ -39,8 +39,10 @@ class Highlighter(RegexHighlighter):
                 quotation|
                 request for proposal|
                 request for quote|
+                rfi|
                 rfp|
                 rfq|
+                services|
                 sole source|
                 solicitation|
                 subcontract|
