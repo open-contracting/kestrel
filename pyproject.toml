@@ -13,7 +13,6 @@ ignore = [
     "D1",
     "PTH",
     "FIX002",  # todo
-    "RUF012",  # rich
 ]
 
 [tool.ruff.lint.pep8-naming]
