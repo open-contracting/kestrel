@@ -28,6 +28,8 @@ npm-debug.log
 
 # Project
 /models/*.skops
+/downloads/*
+!/downloads/.gitkeep
 
 # Development
 *.jsonl

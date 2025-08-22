@@ -18,6 +18,7 @@ Collect data from various APIs.
    manage.py collect [--resume PAGE] {source,...}
 
 --resume PAGE         Resume data collection from this page
+--limit LIMIT         Maximum number of items to collect
 
 label
 ~~~~~

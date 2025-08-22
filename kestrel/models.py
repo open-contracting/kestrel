@@ -1,6 +1,6 @@
 from django.db import models
 
-SOURCES = ["muckrock_foia"]
+SOURCES = ["muckrock_foia", "muckrock_foia_files"]
 
 
 class Record(models.Model):
