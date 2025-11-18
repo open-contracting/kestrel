@@ -4,5 +4,5 @@ Kestrel collects, classifies and extract contracting data from various sources, 
 
 .. |Build Status| image:: https://github.com/open-contracting/kestrel/actions/workflows/ci.yml/badge.svg
    :target: https://github.com/open-contracting/kestrel/actions/workflows/ci.yml
-.. |Coverage Status| image:: https://coveralls.io/repos/github/open-contracting/kestrel/badge.svg?branch=main
-   :target: https://coveralls.io/github/open-contracting/kestrel?branch=main
+.. |Coverage Status| image:: https://codecov.io/github/open-contracting/kestrel/graph/badge.svg
+   :target: https://codecov.io/github/open-contracting/kestrel
