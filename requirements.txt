@@ -91,7 +91,7 @@ typing-extensions==4.12.2
     #   typing-inspection
 typing-inspection==0.4.1
     # via pydantic
-urllib3==2.5.0
+urllib3==2.6.0
     # via
     #   requests
     #   sentry-sdk
