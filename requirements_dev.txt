@@ -107,7 +107,7 @@ setproctitle==1.3.3
     #   gunicorn
 skops==0.13.0
     # via -r requirements.txt
-sqlparse==0.5.1
+sqlparse==0.5.4
     # via
     #   -r requirements.txt
     #   django
