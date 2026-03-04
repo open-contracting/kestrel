@@ -51,7 +51,7 @@ mdurl==0.1.2
     # via
     #   -r requirements.txt
     #   markdown-it-py
-nltk==3.9.1
+nltk==3.9.3
     # via -r requirements.txt
 numpy==2.3.2
     # via
