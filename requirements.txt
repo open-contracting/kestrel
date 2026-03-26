@@ -57,7 +57,7 @@ pygments==2.19.2
     # via rich
 regex==2025.7.34
     # via nltk
-requests==2.32.4
+requests==2.33.0
     # via -r requirements.in
 rich==14.1.0
     # via
