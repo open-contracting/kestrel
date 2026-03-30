@@ -76,7 +76,7 @@ pydantic-core==2.33.2
     # via
     #   -r requirements.txt
     #   pydantic
-pygments==2.19.2
+pygments==2.20.0
     # via
     #   -r requirements.txt
     #   rich
