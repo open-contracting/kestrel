@@ -14,14 +14,14 @@ click==8.2.1
     # via nltk
 dj-database-url==2.2.0
     # via -r requirements.in
-django==4.2.30
+django==5.2.12
     # via
     #   -r requirements.in
     #   dj-database-url
     #   django-rich
 django-rich==2.0.0
     # via -r requirements.in
-gunicorn[setproctitle]==23.0.0
+gunicorn==23.0.0
     # via -r requirements.in
 idna==3.10
     # via requests
@@ -47,7 +47,7 @@ packaging==24.1
     #   skops
 prettytable==3.16.0
     # via skops
-psycopg2==2.9.9
+psycopg==3.3.3
     # via -r requirements.in
 pydantic==2.11.7
     # via -r requirements.in

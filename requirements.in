@@ -1,10 +1,10 @@
 dj-database-url
 django-rich
-django<5
+django<5.3
 gunicorn[setproctitle]
 nltk
 numpy
-psycopg2
+psycopg
 pydantic
 requests
 rich
