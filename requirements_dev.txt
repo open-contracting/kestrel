@@ -23,6 +23,10 @@ click==8.2.1
     #   nltk
 coverage==7.6.2
     # via -r requirements_dev.in
+defusedxml==0.7.1
+    # via
+    #   -r requirements.txt
+    #   nltk
 dj-database-url==2.2.0
     # via -r requirements.txt
 django==5.2.15
@@ -51,7 +55,7 @@ mdurl==0.1.2
     # via
     #   -r requirements.txt
     #   markdown-it-py
-nltk==3.9.4
+nltk==3.10.0
     # via -r requirements.txt
 numpy==2.3.2
     # via

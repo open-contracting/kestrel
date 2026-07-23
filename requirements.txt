@@ -12,6 +12,8 @@ charset-normalizer==3.4.3
     # via requests
 click==8.2.1
     # via nltk
+defusedxml==0.7.1
+    # via nltk
 dj-database-url==2.2.0
     # via -r requirements.in
 django==5.2.15
@@ -33,7 +35,7 @@ markdown-it-py==4.0.0
     # via rich
 mdurl==0.1.2
     # via markdown-it-py
-nltk==3.9.4
+nltk==3.10.0
     # via -r requirements.in
 numpy==2.3.2
     # via
